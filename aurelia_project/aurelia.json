@@ -29,19 +29,7 @@
         ]
       },
       {
-        "name": "vendor-bundle.js",
-        "prepend": [
-          "node_modules/bluebird/js/browser/bluebird.core.js",
-          {
-            "path": "node_modules/aurelia-cli/lib/resources/scripts/configure-bluebird-no-long-stacktraces.js",
-            "env": "stage & prod"
-          },
-          {
-            "path": "node_modules/aurelia-cli/lib/resources/scripts/configure-bluebird.js",
-            "env": "dev"
-          },
-          "node_modules/requirejs/require.js"
-        ],
+        "name": "aurelia-bundle.js",
         "dependencies": [
           "aurelia-binding",
           "aurelia-bootstrapper",
@@ -79,7 +67,15 @@
             "path": "../node_modules/aurelia-testing/dist/amd",
             "main": "aurelia-testing",
             "env": "dev"
-          },
+          }
+        ]
+      },
+      {
+        "name": "vendor-bundle.js",
+        "prepend": [
+          "node_modules/requirejs/require.js"
+        ],
+        "dependencies": [
           "text"
         ]
       }
