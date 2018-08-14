@@ -1,3 +1,5 @@
 export function configure(config) {
-  //config.globalResources([]);
+  config.globalResources([
+    // 'resources/elements/document-viewer/document-viewer'
+  ]);
 }

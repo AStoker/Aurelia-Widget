@@ -20,6 +20,5 @@ export function configure(aurelia) {
         //The following line takes all global resource custom elements and registers them as web components.
         //Once the element is registered, in-page elements will begin rendering.
         registry.registerAllGlobalElements();
-        // aurelia.setRoot();
     });
 }
