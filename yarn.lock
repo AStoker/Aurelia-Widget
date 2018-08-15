@@ -531,7 +531,7 @@ aurelia-history@^1.0.0, aurelia-history@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/aurelia-history/-/aurelia-history-1.1.0.tgz#779aa386d56803aaa4bdb7d71435a57768505f57"
 
-aurelia-loader-default@^1.0.0:
+aurelia-loader-default@^1.0.0, aurelia-loader-default@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/aurelia-loader-default/-/aurelia-loader-default-1.0.4.tgz#da3c06622cd491cc7ba886633caeabf7a21d3f44"
   dependencies:

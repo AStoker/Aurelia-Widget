@@ -25,11 +25,11 @@ vendorLoader.onload = function() {
     let bootstrapper = document.createElement('script');
     bootstrapper.id = "__etrieve_bootstrapper";
     bootstrapper.text = `
-    //(function (require) {
-        __etrieve.require(["aurelia-bootstrapper", "main"], function(bootstrapper, main){
+        __etrieve.require(["aurelia-bootstrapper", "aurelia-pal", "EtrieveLoader", "main"], function(bootstrapper, aureliaPal, loader, main){
+            aureliaPal.PLATFORM.Loader = loader.EtrieveLoader;
+            //debugger;
             bootstrapper.bootstrap(main.configure);
         });
-    //}(__etrieveRequire));
     `;
     scriptEntrySpecifier.parentNode.insertBefore(bootstrapper, scriptEntrySpecifier.nextSibling);
 }

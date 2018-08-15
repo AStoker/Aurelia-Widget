@@ -11,6 +11,7 @@
     "almond": "^0.3.3",
     "aurelia-animator-css": "^1.0.4",
     "aurelia-bootstrapper": "^2.2.0",
+    "aurelia-loader-default": "^1.0.4",
     "aurelia-web-components": "^0.2.1",
     "bluebird": "^3.5.1",
     "requirejs": "^2.3.5",
