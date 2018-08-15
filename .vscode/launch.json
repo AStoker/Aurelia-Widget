@@ -16,6 +16,15 @@
       }
     },
     {
+      "name": "Debug CLI Build",
+      "type": "node2",
+      "request": "launch",
+      "program": "${workspaceRoot}/node_modules/aurelia-cli/bin/aurelia-cli.js",
+      "args": ["build"],
+      "stopOnEntry": true,
+      "cwd": "${workspaceRoot}"
+    },
+    {
       "type": "chrome",
       "request": "attach",
       "name": "Attach Karma Chrome",

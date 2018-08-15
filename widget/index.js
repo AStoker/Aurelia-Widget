@@ -5,27 +5,37 @@ if (!scriptEntrySpecifier) {
     console.error('No entry specifier found');
 }
 
-let entryId = scriptEntrySpecifier.dataset.entry;
-if (!entryId) {
-    console.error('No entry id found');
+
+let etrieveEntry = document.createElement('section');
+etrieveEntry.setAttribute('etrieve-app', '');
+etrieveEntry.style.display = 'none';
+
+// let etrieveShadow = etrieveEntry.attachShadow({mode: 'open'});
+
+// let aureliaContainer = document.createElement('section');
+// aureliaContainer.setAttribute('aurelia-app', 'main');
+
+// etrieveEntry.appendChild(aureliaContainer);
+
+let vendorLoader = document.createElement('script');
+// vendorLoader.setAttribute('data-main', 'aurelia-bootstrapper');
+vendorLoader.src = '/widget/bundle-test.js';
+vendorLoader.async = false;
+vendorLoader.onload = function() {
+    let bootstrapper = document.createElement('script');
+    bootstrapper.id = "__etrieve_bootstrapper";
+    bootstrapper.text = `
+    //(function (require) {
+        __etrieve.require(["aurelia-bootstrapper", "main"], function(bootstrapper, main){
+            bootstrapper.bootstrap(main.configure);
+        });
+    //}(__etrieveRequire));
+    `;
+    scriptEntrySpecifier.parentNode.insertBefore(bootstrapper, scriptEntrySpecifier.nextSibling);
 }
 
-let entryElements = document.querySelectorAll(`#${entryId}`);
-if (entryElements.length > 1) {
-    console.error('More than one entry element found');
-}
-if (entryElements.length < 1) {
-    console.error('No entry element found');
-}
-let entryElement = entryElements[0];
+// aureliaContainer.appendChild(vendorLoader);
 
-let aureliaEntry = document.createElement('section');
-aureliaEntry.setAttribute('aurelia-app', '');
 
-entryElement.appendChild(aureliaEntry);
 
-let entryScript = document.createElement('script');
-entryScript.src = 'widget/initialize.js';
-entryScript.type = 'module';
-
-entryElement.appendChild(entryScript);
+document.head.appendChild(vendorLoader);
