@@ -2151,9 +2151,27 @@ __etrieve.requirejs = requirejs;__etrieve.require = require;__etrieve.define = d
 }());
 __etrieve.define("scripts/require-bundle.js", function(){});
 
+let polyfillScript = document.createElement('script');
+polyfillScript.src = 'https://unpkg.com/@webcomponents/webcomponentsjs@2.0.0/webcomponents-loader.js';
+polyfillScript.setAttribute('defer', '');
+document.head.appendChild(polyfillScript);
+WebComponents.waitFor(() => {
+    // At this point we are guaranteed that all required polyfills have
+    // loaded, and can use web components API's.
+    // The standard pattern is to load element definitions that call
+    // `customElements.define` here.
+    // Note: returning the import's promise causes the custom elements
+    // polyfill to wait until all definitions are loaded and then upgrade
+    // the document in one batch, for better performance.
+    //return import('my-element.js');
+    debugger;
+});
+
+__etrieve.define("widget/polyfill-insertion.js", function(){});
+
 _aureliaConfigureModuleLoader();
 __etrieve.define('text',{});
-function _aureliaConfigureModuleLoader(){__etrieve.requirejs.config({"baseUrl":"src/","paths":{"root":"src","resources":"resources","elements":"resources/elements","attributes":"resources/attributes","valueConverters":"resources/value-converters","bindingBehaviors":"resources/binding-behaviors","text":"../node_modules/text/text","aurelia-binding":"../node_modules/aurelia-binding/dist/amd/aurelia-binding","aurelia-bootstrapper":"../node_modules/aurelia-bootstrapper/dist/amd/aurelia-bootstrapper","aurelia-dependency-injection":"../node_modules/aurelia-dependency-injection/dist/amd/aurelia-dependency-injection","aurelia-event-aggregator":"../node_modules/aurelia-event-aggregator/dist/amd/aurelia-event-aggregator","aurelia-framework":"../node_modules/aurelia-framework/dist/amd/aurelia-framework","aurelia-history":"../node_modules/aurelia-history/dist/amd/aurelia-history","aurelia-history-browser":"../node_modules/aurelia-history-browser/dist/amd/aurelia-history-browser","aurelia-loader":"../node_modules/aurelia-loader/dist/amd/aurelia-loader","aurelia-loader-default":"../node_modules/aurelia-loader-default/dist/amd/aurelia-loader-default","aurelia-logging":"../node_modules/aurelia-logging/dist/amd/aurelia-logging","aurelia-logging-console":"../node_modules/aurelia-logging-console/dist/amd/aurelia-logging-console","aurelia-metadata":"../node_modules/aurelia-metadata/dist/amd/aurelia-metadata","aurelia-pal":"../node_modules/aurelia-pal/dist/amd/aurelia-pal","aurelia-pal-browser":"../node_modules/aurelia-pal-browser/dist/amd/aurelia-pal-browser","aurelia-path":"../node_modules/aurelia-path/dist/amd/aurelia-path","aurelia-polyfills":"../node_modules/aurelia-polyfills/dist/amd/aurelia-polyfills","aurelia-route-recognizer":"../node_modules/aurelia-route-recognizer/dist/amd/aurelia-route-recognizer","aurelia-router":"../node_modules/aurelia-router/dist/amd/aurelia-router","aurelia-task-queue":"../node_modules/aurelia-task-queue/dist/amd/aurelia-task-queue","aurelia-templating":"../node_modules/aurelia-templating/dist/amd/aurelia-templating","aurelia-templating-binding":"../node_modules/aurelia-templating-binding/dist/amd/aurelia-templating-binding","aurelia-web-components":"../node_modules/aurelia-web-components/dist/amd/aurelia-web-components","require-bundle":"../scripts/require-bundle","app-bundle":"../scripts/app-bundle"},"packages":[{"name":"aurelia-templating-resources","location":"../node_modules/aurelia-templating-resources/dist/amd","main":"aurelia-templating-resources"},{"name":"aurelia-templating-router","location":"../node_modules/aurelia-templating-router/dist/amd","main":"aurelia-templating-router"},{"name":"aurelia-testing","location":"../node_modules/aurelia-testing/dist/amd","main":"aurelia-testing"}],"stubModules":["text"],"shim":{},"bundles":{"require-bundle":[],"app-bundle":["EtrieveLoader","app","aurelia-binding","aurelia-bootstrapper","aurelia-dependency-injection","aurelia-event-aggregator","aurelia-framework","aurelia-history","aurelia-history-browser","aurelia-loader","aurelia-loader-default","aurelia-logging","aurelia-logging-console","aurelia-metadata","aurelia-pal","aurelia-pal-browser","aurelia-path","aurelia-polyfills","aurelia-route-recognizer","aurelia-router","aurelia-task-queue","aurelia-templating","aurelia-templating-binding","aurelia-templating-resources","aurelia-templating-resources/abstract-repeater","aurelia-templating-resources/analyze-view-factory","aurelia-templating-resources/array-repeat-strategy","aurelia-templating-resources/attr-binding-behavior","aurelia-templating-resources/aurelia-hide-style","aurelia-templating-resources/binding-mode-behaviors","aurelia-templating-resources/binding-signaler","aurelia-templating-resources/compose","aurelia-templating-resources/css-resource","aurelia-templating-resources/debounce-binding-behavior","aurelia-templating-resources/dynamic-element","aurelia-templating-resources/else","aurelia-templating-resources/focus","aurelia-templating-resources/hide","aurelia-templating-resources/html-resource-plugin","aurelia-templating-resources/html-sanitizer","aurelia-templating-resources/if","aurelia-templating-resources/if-core","aurelia-templating-resources/map-repeat-strategy","aurelia-templating-resources/null-repeat-strategy","aurelia-templating-resources/number-repeat-strategy","aurelia-templating-resources/repeat","aurelia-templating-resources/repeat-strategy-locator","aurelia-templating-resources/repeat-utilities","aurelia-templating-resources/replaceable","aurelia-templating-resources/sanitize-html","aurelia-templating-resources/self-binding-behavior","aurelia-templating-resources/set-repeat-strategy","aurelia-templating-resources/show","aurelia-templating-resources/signal-binding-behavior","aurelia-templating-resources/throttle-binding-behavior","aurelia-templating-resources/update-trigger-binding-behavior","aurelia-templating-resources/with","aurelia-templating-router","aurelia-templating-router/route-href","aurelia-templating-router/route-loader","aurelia-templating-router/router-view","aurelia-testing","aurelia-testing/compile-spy","aurelia-testing/component-tester","aurelia-testing/view-spy","aurelia-testing/wait","aurelia-web-components","environment","main","resources/elements/document-viewer/document-viewer","resources/index"]}})};
+function _aureliaConfigureModuleLoader(){__etrieve.requirejs.config({"baseUrl":"src/","paths":{"root":"src","resources":"resources","elements":"resources/elements","attributes":"resources/attributes","valueConverters":"resources/value-converters","bindingBehaviors":"resources/binding-behaviors","text":"../node_modules/text/text","aurelia-binding":"../node_modules/aurelia-binding/dist/amd/aurelia-binding","aurelia-bootstrapper":"../node_modules/aurelia-bootstrapper/dist/amd/aurelia-bootstrapper","aurelia-dependency-injection":"../node_modules/aurelia-dependency-injection/dist/amd/aurelia-dependency-injection","aurelia-event-aggregator":"../node_modules/aurelia-event-aggregator/dist/amd/aurelia-event-aggregator","aurelia-framework":"../node_modules/aurelia-framework/dist/amd/aurelia-framework","aurelia-history":"../node_modules/aurelia-history/dist/amd/aurelia-history","aurelia-history-browser":"../node_modules/aurelia-history-browser/dist/amd/aurelia-history-browser","aurelia-loader":"../node_modules/aurelia-loader/dist/amd/aurelia-loader","aurelia-loader-default":"../node_modules/aurelia-loader-default/dist/amd/aurelia-loader-default","aurelia-logging":"../node_modules/aurelia-logging/dist/amd/aurelia-logging","aurelia-logging-console":"../node_modules/aurelia-logging-console/dist/amd/aurelia-logging-console","aurelia-metadata":"../node_modules/aurelia-metadata/dist/amd/aurelia-metadata","aurelia-pal":"../node_modules/aurelia-pal/dist/amd/aurelia-pal","aurelia-pal-browser":"../node_modules/aurelia-pal-browser/dist/amd/aurelia-pal-browser","aurelia-path":"../node_modules/aurelia-path/dist/amd/aurelia-path","aurelia-polyfills":"../node_modules/aurelia-polyfills/dist/amd/aurelia-polyfills","aurelia-route-recognizer":"../node_modules/aurelia-route-recognizer/dist/amd/aurelia-route-recognizer","aurelia-router":"../node_modules/aurelia-router/dist/amd/aurelia-router","aurelia-task-queue":"../node_modules/aurelia-task-queue/dist/amd/aurelia-task-queue","aurelia-templating":"../node_modules/aurelia-templating/dist/amd/aurelia-templating","aurelia-templating-binding":"../node_modules/aurelia-templating-binding/dist/amd/aurelia-templating-binding","aurelia-web-components":"../node_modules/aurelia-web-components/dist/amd/aurelia-web-components","require-bundle":"../scripts/require-bundle","app-bundle":"../scripts/app-bundle"},"packages":[{"name":"aurelia-templating-resources","location":"../node_modules/aurelia-templating-resources/dist/amd","main":"aurelia-templating-resources"},{"name":"aurelia-templating-router","location":"../node_modules/aurelia-templating-router/dist/amd","main":"aurelia-templating-router"},{"name":"aurelia-testing","location":"../node_modules/aurelia-testing/dist/amd","main":"aurelia-testing"}],"stubModules":["text"],"shim":{},"bundles":{"require-bundle":[],"app-bundle":["EtrieveLoader","aurelia-binding","aurelia-bootstrapper","aurelia-dependency-injection","aurelia-event-aggregator","aurelia-framework","aurelia-history","aurelia-history-browser","aurelia-loader","aurelia-loader-default","aurelia-logging","aurelia-logging-console","aurelia-metadata","aurelia-pal","aurelia-pal-browser","aurelia-path","aurelia-polyfills","aurelia-route-recognizer","aurelia-router","aurelia-task-queue","aurelia-templating","aurelia-templating-binding","aurelia-templating-resources","aurelia-templating-resources/abstract-repeater","aurelia-templating-resources/analyze-view-factory","aurelia-templating-resources/array-repeat-strategy","aurelia-templating-resources/attr-binding-behavior","aurelia-templating-resources/aurelia-hide-style","aurelia-templating-resources/binding-mode-behaviors","aurelia-templating-resources/binding-signaler","aurelia-templating-resources/compose","aurelia-templating-resources/css-resource","aurelia-templating-resources/debounce-binding-behavior","aurelia-templating-resources/dynamic-element","aurelia-templating-resources/else","aurelia-templating-resources/focus","aurelia-templating-resources/hide","aurelia-templating-resources/html-resource-plugin","aurelia-templating-resources/html-sanitizer","aurelia-templating-resources/if","aurelia-templating-resources/if-core","aurelia-templating-resources/map-repeat-strategy","aurelia-templating-resources/null-repeat-strategy","aurelia-templating-resources/number-repeat-strategy","aurelia-templating-resources/repeat","aurelia-templating-resources/repeat-strategy-locator","aurelia-templating-resources/repeat-utilities","aurelia-templating-resources/replaceable","aurelia-templating-resources/sanitize-html","aurelia-templating-resources/self-binding-behavior","aurelia-templating-resources/set-repeat-strategy","aurelia-templating-resources/show","aurelia-templating-resources/signal-binding-behavior","aurelia-templating-resources/throttle-binding-behavior","aurelia-templating-resources/update-trigger-binding-behavior","aurelia-templating-resources/with","aurelia-templating-router","aurelia-templating-router/route-href","aurelia-templating-router/route-loader","aurelia-templating-router/router-view","aurelia-testing","aurelia-testing/compile-spy","aurelia-testing/component-tester","aurelia-testing/view-spy","aurelia-testing/wait","aurelia-web-components","environment","main","resources/elements/document-viewer/document-viewer","resources/elements/style-inject/style-inject","resources/index"]}})};
 __etrieve.define("scripts/config-bundle.js", function(){});
 
 __etrieve.define('resources/index',["exports"], function (exports) {
@@ -2167,12 +2185,23 @@ __etrieve.define('resources/index',["exports"], function (exports) {
     config.globalResources([]);
   }
 });
-__etrieve.define('resources/elements/document-viewer/document-viewer',["exports"], function (exports) {
-    "use strict";
+__etrieve.define('resources/elements/style-inject/style-inject',['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
+    'use strict';
 
     Object.defineProperty(exports, "__esModule", {
         value: true
     });
+    exports.StyleInject = undefined;
+
+    function _initDefineProp(target, property, descriptor, context) {
+        if (!descriptor) return;
+        Object.defineProperty(target, property, {
+            enumerable: descriptor.enumerable,
+            configurable: descriptor.configurable,
+            writable: descriptor.writable,
+            value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+        });
+    }
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -2180,11 +2209,180 @@ __etrieve.define('resources/elements/document-viewer/document-viewer',["exports"
         }
     }
 
-    var DocumentViewer = exports.DocumentViewer = function DocumentViewer() {
-        _classCallCheck(this, DocumentViewer);
-    };
+    function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+        var desc = {};
+        Object['ke' + 'ys'](descriptor).forEach(function (key) {
+            desc[key] = descriptor[key];
+        });
+        desc.enumerable = !!desc.enumerable;
+        desc.configurable = !!desc.configurable;
+
+        if ('value' in desc || desc.initializer) {
+            desc.writable = true;
+        }
+
+        desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+            return decorator(target, property, desc) || desc;
+        }, desc);
+
+        if (context && desc.initializer !== void 0) {
+            desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+            desc.initializer = undefined;
+        }
+
+        if (desc.initializer === void 0) {
+            Object['define' + 'Property'](target, property, desc);
+            desc = null;
+        }
+
+        return desc;
+    }
+
+    function _initializerWarningHelper(descriptor, context) {
+        throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+    }
+
+    var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
+
+    var StyleInject = exports.StyleInject = (_dec = (0, _aureliaFramework.containerless)(), _dec2 = (0, _aureliaFramework.inlineView)('<template><style ref="styleTag"></style></template>'), _dec3 = (0, _aureliaFramework.inject)(Element, _aureliaFramework.Loader), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
+        function StyleInject(element, loader) {
+            _classCallCheck(this, StyleInject);
+
+            _initDefineProp(this, 'from', _descriptor, this);
+
+            this.element = element;
+            this.loader = loader;
+
+            this._relativeUrl = '';
+        }
+
+        StyleInject.prototype.bind = function bind() {
+            var containerUrlParts = this.element.au.controller.scope.resources.viewUrl.split('/');
+            containerUrlParts.pop();
+            this._relativeUrl = containerUrlParts.join('/');
+
+            this.fromChanged(this.from);
+        };
+
+        StyleInject.prototype.attached = function attached() {};
+
+        StyleInject.prototype.fromChanged = function fromChanged(from, oldLocation) {
+            var _this = this;
+
+            if (from) {
+                var url = normalize(this._relativeUrl + '/' + from);
+                this.loader.loadText(url).then(function (text) {
+                    _this.insertStyle(text);
+                });
+            }
+        };
+
+        StyleInject.prototype.insertStyle = function insertStyle(contents) {
+            var styleContents = document.createTextNode(contents);
+            this.styleTag.appendChild(styleContents);
+        };
+
+        return StyleInject;
+    }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'from', [_aureliaFramework.bindable], {
+        enumerable: true,
+        initializer: null
+    })), _class2)) || _class) || _class) || _class);
+
+
+    function normalize(href) {
+        var link = document.createElement("a");
+        link.href = href;
+        return link.pathname.replace(/^\//, '');
+    }
 });
-__etrieve.define('text!resources/elements/document-viewer/document-viewer.html', ['module'], function(module) { module.exports = "<template>\n    viewer\n</template>"; });
+__etrieve.define('resources/elements/document-viewer/document-viewer',['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
+    'use strict';
+
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+    exports.EtrieveDocumentViewer = undefined;
+
+    function _initDefineProp(target, property, descriptor, context) {
+        if (!descriptor) return;
+        Object.defineProperty(target, property, {
+            enumerable: descriptor.enumerable,
+            configurable: descriptor.configurable,
+            writable: descriptor.writable,
+            value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+        });
+    }
+
+    function _classCallCheck(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+            throw new TypeError("Cannot call a class as a function");
+        }
+    }
+
+    function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+        var desc = {};
+        Object['ke' + 'ys'](descriptor).forEach(function (key) {
+            desc[key] = descriptor[key];
+        });
+        desc.enumerable = !!desc.enumerable;
+        desc.configurable = !!desc.configurable;
+
+        if ('value' in desc || desc.initializer) {
+            desc.writable = true;
+        }
+
+        desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+            return decorator(target, property, desc) || desc;
+        }, desc);
+
+        if (context && desc.initializer !== void 0) {
+            desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+            desc.initializer = undefined;
+        }
+
+        if (desc.initializer === void 0) {
+            Object['define' + 'Property'](target, property, desc);
+            desc = null;
+        }
+
+        return desc;
+    }
+
+    function _initializerWarningHelper(descriptor, context) {
+        throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+    }
+
+    var _dec, _dec2, _class, _desc, _value, _class2, _descriptor;
+
+    var EtrieveDocumentViewer = exports.EtrieveDocumentViewer = (_dec = (0, _aureliaFramework.useShadowDOM)(), _dec2 = (0, _aureliaFramework.inject)(Element), _dec(_class = _dec2(_class = (_class2 = function () {
+        function EtrieveDocumentViewer(element) {
+            _classCallCheck(this, EtrieveDocumentViewer);
+
+            _initDefineProp(this, 'test', _descriptor, this);
+
+            this.element = element;
+        }
+
+        EtrieveDocumentViewer.prototype.bind = function bind() {
+            this.testChanged(this.test);
+        };
+
+        EtrieveDocumentViewer.prototype.attached = function attached() {};
+
+        EtrieveDocumentViewer.prototype.detached = function detached() {};
+
+        EtrieveDocumentViewer.prototype.testChanged = function testChanged(newVal, oldVal) {
+            console.log(arguments);
+        };
+
+        return EtrieveDocumentViewer;
+    }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'test', [_aureliaFramework.bindable], {
+        enumerable: true,
+        initializer: null
+    })), _class2)) || _class) || _class);
+});
+__etrieve.define('text!resources/elements/document-viewer/document-viewer.html', ['module'], function(module) { module.exports = "<template>\n    <require from=\"resources/elements/style-inject/style-inject\"></require>\n    <style-inject from=\"./document-viewer.css\"></style-inject>\n\n    <h1>test</h1>\n    viewer\n</template>"; });
+__etrieve.define('text!resources/elements/document-viewer/document-viewer.css', ['module'], function(module) { module.exports = "h1 {\n  color: red; }\n"; });
 __etrieve.define('main',['exports', 'aurelia-web-components', './environment'], function (exports, _aureliaWebComponents, _environment) {
     'use strict';
 
@@ -2230,26 +2428,6 @@ __etrieve.define('environment',["exports"], function (exports) {
     testing: true
   };
 });
-__etrieve.define('app',['exports'], function (exports) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var App = exports.App = function App() {
-    _classCallCheck(this, App);
-
-    this.message = 'Hello World!';
-  };
-});
-__etrieve.define('text!app.html', ['module'], function(module) { module.exports = "<template>\n  <h1>${message}</h1>\n\n  <document-viewer></document-viewer>\n</template>\n"; });
 __etrieve.define('EtrieveLoader',['exports', 'aurelia-metadata', 'aurelia-loader-default', 'aurelia-pal'], function (exports, _aureliaMetadata, _aureliaLoaderDefault, _aureliaPal) {
   'use strict';
 

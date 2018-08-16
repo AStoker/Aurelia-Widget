@@ -12,6 +12,7 @@ export default function widgetCompile(cb) {
         // },
         generateSourceMaps: true,
         include: [
+            "widget/polyfill-insertion.js",
             "scripts/require-bundle.js",
             "scripts/config-bundle.js",
             "scripts/app-bundle.js",

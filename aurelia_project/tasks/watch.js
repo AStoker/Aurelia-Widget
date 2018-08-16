@@ -8,13 +8,19 @@ import transpile from './transpile';
 import processMarkup from './process-markup';
 import processCSS from './process-css';
 import copyFiles from './copy-files';
+import widgetCompile from './widget-compile';
 
 const debounceWaitTime = 100;
 let isBuilding = false;
 let pendingRefreshPaths = [];
 let watchCallback = () => { };
+
+let widgetBundles = [project.build.targets[0].output + '/**/*', 'widget/initializer.js', 'widget/polyfill-insertion.js'];
+console.log(widgetBundles);
+
 let watches = [
   { name: 'transpile', callback: transpile, source: project.transpiler.source },
+  { name: 'bundles', callback: widgetCompile, source: widgetBundles},
   { name: 'markup', callback: processMarkup, source: project.markupProcessor.source },
   { name: 'CSS', callback: processCSS, source: project.cssProcessor.source }
 ];
