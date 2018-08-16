@@ -2324,7 +2324,7 @@ __etrieve.define('EtrieveLoader',['exports', 'aurelia-metadata', 'aurelia-loader
 
   (function (require, requirejs, define) {
     if (!_aureliaPal.PLATFORM.global.System || !_aureliaPal.PLATFORM.global.System.import) {
-      if (_aureliaPal.PLATFORM.global.__etrieve.requirejs && __etrieve.requirejs.s && __etrieve.requirejs.s.contexts && __etrieve.requirejs.s.contexts._ && __etrieve.requirejs.s.contexts._.defined) {
+      if (_aureliaPal.PLATFORM.global.__etrieve && _aureliaPal.PLATFORM.global.__etrieve.requirejs && __etrieve.requirejs.s && __etrieve.requirejs.s.contexts && __etrieve.requirejs.s.contexts._ && __etrieve.requirejs.s.contexts._.defined) {
         _aureliaPal.PLATFORM.eachModule = function (callback) {
           var defined = __etrieve.requirejs.s.contexts._.defined;
           for (var key in defined) {
@@ -25219,6 +25219,13 @@ __etrieve.define('aurelia-binding',['exports', 'aurelia-logging', 'aurelia-pal',
     }
   }
 });
-//# sourceMappingURL=app-bundle.js.map;
 __etrieve.define("scripts/app-bundle.js", function(){});
 
+__etrieve.require(["aurelia-bootstrapper", "aurelia-pal", "EtrieveLoader", "main"], function(bootstrapper, aureliaPal, loader, main){
+    aureliaPal.PLATFORM.Loader = loader.EtrieveLoader;
+    bootstrapper.bootstrap(main.configure);
+});
+__etrieve.define("widget/initializer.js", function(){});
+
+
+//# sourceMappingURL=bundle-test.js.map

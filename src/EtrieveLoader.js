@@ -38,7 +38,7 @@ export class EtrieveLoader extends DefaultLoader {
 
 (function(require, requirejs, define) {
     if (!PLATFORM.global.System || !PLATFORM.global.System.import) {
-      if (PLATFORM.global.__etrieve.requirejs && __etrieve.requirejs.s && __etrieve.requirejs.s.contexts && __etrieve.requirejs.s.contexts._ && __etrieve.requirejs.s.contexts._.defined) {
+      if (PLATFORM.global.__etrieve && PLATFORM.global.__etrieve.requirejs && __etrieve.requirejs.s && __etrieve.requirejs.s.contexts && __etrieve.requirejs.s.contexts._ && __etrieve.requirejs.s.contexts._.defined) {
         PLATFORM.eachModule = function(callback) {
           let defined = __etrieve.requirejs.s.contexts._.defined;
           for (let key in defined) {

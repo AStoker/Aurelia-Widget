@@ -10,10 +10,12 @@ export default function widgetCompile(cb) {
         //   start: "(function() {",
         //   end: "}())"
         // },
+        generateSourceMaps: true,
         include: [
             "scripts/require-bundle.js",
             "scripts/config-bundle.js",
-            "scripts/app-bundle.js"
+            "scripts/app-bundle.js",
+            "widget/initializer.js"
         ],
         out: "widget/bundle-test.js"
     }, buildResponse => {
