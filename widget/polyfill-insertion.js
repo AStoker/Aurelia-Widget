@@ -1,6 +1,7 @@
+
 let polyfillScript = document.createElement('script');
-polyfillScript.src = 'widget/webcomponentsjs/webcomponents-loader.js';
-// polyfillScript.setAttribute('defer', '');
+polyfillScript.src = 'widget/webcomponentsjs/webcomponents-bundle.js';
+polyfillScript.async = false;
 document.head.appendChild(polyfillScript);
 
 // polyfillScript.onload = function() {
