@@ -20,6 +20,6 @@ export class EtrieveDocumentViewer {
     }
 
     testChanged(newVal, oldVal) {
-        console.log(arguments)
+        // console.log(arguments)
     }
 }

@@ -5,6 +5,7 @@ import widgetCompile from './widget-compile';
 import processMarkup from './process-markup';
 import processCSS from './process-css';
 import copyFiles from './copy-files';
+import copyLibraries from './copy-libraries';
 import watch from './watch';
 import project from '../aurelia.json';
 
@@ -14,7 +15,8 @@ let build = gulp.series(
     transpile,
     processMarkup,
     processCSS,
-    copyFiles
+    copyFiles,
+    copyLibraries
   ),
   writeBundles,
   widgetCompile
