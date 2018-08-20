@@ -11,12 +11,12 @@ import project from '../aurelia.json';
 
 let build = gulp.series(
   readProjectConfiguration,
+  copyLibraries,
   gulp.parallel(
     transpile,
     processMarkup,
     processCSS,
-    copyFiles,
-    copyLibraries
+    copyFiles
   ),
   writeBundles,
   widgetCompile

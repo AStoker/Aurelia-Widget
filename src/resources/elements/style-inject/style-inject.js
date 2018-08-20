@@ -1,4 +1,6 @@
 import { inject, bindable, containerless, inlineView, Loader } from 'aurelia-framework';
+// import StyleTransformer from '../../../widget/libs/shadycss/src/style-transformer.js';
+// import StyleTransformer from '@webcomponents/shadycss';
 
 @containerless()
 @inlineView('<template><style ref="styleTag"></style></template>')
@@ -73,7 +75,7 @@ export class StyleInject {
 
     insertStyle(contents) {
         if (this._isolateCSS) {
-            
+
         }
         let styleContents = document.createTextNode(contents);
         this.styleTag.appendChild(styleContents);
