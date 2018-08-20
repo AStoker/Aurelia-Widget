@@ -6,21 +6,25 @@ import { inject, bindable, containerless, inlineView, Loader } from 'aurelia-fra
 export class StyleInject {
 
     @bindable from;
+    @bindable isolate;
 
     constructor(element, loader) {
         this.element = element;
         this.loader = loader;
 
         this._relativeUrl = '';
+        this._isolateCSS = false;
     }
 
     bind() {
+        console.log(this.isolate);
         //this.element.au.controller.view.resources.viewUrl; // Current view's url
         //this.element.au.controller.scope.resources.viewUrl // Current parent (scope) view's url
         let containerUrlParts = this.element.au.controller.scope.resources.viewUrl.split('/');
         containerUrlParts.pop();
         this._relativeUrl = containerUrlParts.join('/');
 
+        this.isolateChanged(this.isolate);
         this.fromChanged(this.from);
     }
     
@@ -38,8 +42,39 @@ export class StyleInject {
                 });
         }
     }
+    isolateChanged(isolate) {
+        /*
+
+        undefined - false
+        null - false
+        false - false
+        "false" - false
+
+        "" - true
+        "true" - true
+        true - true
+        "anything" - true
+
+        */
+        switch (isolate) {
+            case undefined:
+            case null:
+            case false:
+            case "false":
+                this._isolateCSS = false;
+                break;
+            case "":
+            case true:
+            case "true":
+            default:
+                this._isolateCSS = true;
+        }
+    }
 
     insertStyle(contents) {
+        if (this._isolateCSS) {
+            
+        }
         let styleContents = document.createTextNode(contents);
         this.styleTag.appendChild(styleContents);
     }
