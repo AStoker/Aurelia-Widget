@@ -95,6 +95,10 @@
     normalize-path "^2.0.1"
     through2 "^2.0.3"
 
+"@webcomponents/shadycss@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@webcomponents/shadycss/-/shadycss-1.5.0.tgz#109e596027eed04bc5032414c9f094e1aeb9260e"
+
 "@webcomponents/webcomponentsjs@^2.0.4":
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/@webcomponents/webcomponentsjs/-/webcomponentsjs-2.0.4.tgz#fe18c288f99b7103e9ae7a766020f9702cedcc08"
