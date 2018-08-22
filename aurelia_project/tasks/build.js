@@ -11,7 +11,7 @@ import project from '../aurelia.json';
 
 let build = gulp.series(
   readProjectConfiguration,
-  copyLibraries,
+  //copyLibraries,
   gulp.parallel(
     transpile,
     processMarkup,

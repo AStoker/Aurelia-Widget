@@ -1,4 +1,5 @@
 
+
 let polyfillScript = document.createElement('script');
 polyfillScript.src = 'widget/libs/webcomponentsjs/webcomponents-loader.js';
 polyfillScript.async = false;
@@ -21,11 +22,11 @@ polyfillScript.onload = function() {
     });
 };
 
-let cssScopingScript = document.createElement('script');
-cssScopingScript.src = 'widget/libs/shadycss/custom-style-interface.min.js';//'widget/libs/shadycss/src/scoping-shim.js';
-cssScopingScript.async = false;
-// cssScopingScript.type = 'module';
-document.head.appendChild(cssScopingScript);
+// let cssScopingScript = document.createElement('script');
+// cssScopingScript.src = 'widget/libs/shadycss/custom-style-interface.min.js';//'widget/libs/shadycss/src/scoping-shim.js';
+// cssScopingScript.async = false;
+// // cssScopingScript.type = 'module';
+// document.head.appendChild(cssScopingScript);
 /*
 {
             "name": "@webcomponents/shadycss",

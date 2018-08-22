@@ -2152,6 +2152,7 @@ __etrieve.requirejs = requirejs;__etrieve.require = require;__etrieve.define = d
 __etrieve.define("scripts/require-bundle.js", function(){});
 
 
+
 let polyfillScript = document.createElement('script');
 polyfillScript.src = 'widget/libs/webcomponentsjs/webcomponents-loader.js';
 polyfillScript.async = false;
@@ -2174,11 +2175,11 @@ polyfillScript.onload = function() {
     });
 };
 
-let cssScopingScript = document.createElement('script');
-cssScopingScript.src = 'widget/libs/shadycss/custom-style-interface.min.js';//'widget/libs/shadycss/src/scoping-shim.js';
-cssScopingScript.async = false;
-// cssScopingScript.type = 'module';
-document.head.appendChild(cssScopingScript);
+// let cssScopingScript = document.createElement('script');
+// cssScopingScript.src = 'widget/libs/shadycss/custom-style-interface.min.js';//'widget/libs/shadycss/src/scoping-shim.js';
+// cssScopingScript.async = false;
+// // cssScopingScript.type = 'module';
+// document.head.appendChild(cssScopingScript);
 /*
 {
             "name": "@webcomponents/shadycss",
@@ -2424,7 +2425,7 @@ __etrieve.define('resources/elements/document-viewer/document-viewer',['exports'
         initializer: null
     })), _class2)) || _class) || _class);
 });
-__etrieve.define('text!resources/elements/document-viewer/document-viewer.html', ['module'], function(module) { module.exports = "<template id=\"testing-foo\">\n    <require from=\"resources/elements/style-inject/style-inject\"></require>\n    <style-inject from=\"./document-viewer.css\" isolate></style-inject>\n\n\n    <h1>test</h1>\n    viewer\n</template>\n"; });
+__etrieve.define('text!resources/elements/document-viewer/document-viewer.html', ['module'], function(module) { module.exports = "<template id=\"testing-foo\">\n    <require from=\"resources/elements/style-inject/style-inject\"></require>\n    <style-inject from=\"./document-viewer.css\" isolate></style-inject>\n\n\n    <h1>test</h1>\n    viewer iframe test\n\n    <!-- <iframe src=\"https://qacontent.softdocs.com/#areaId=55&nodeId=9825677&documentId=7581925\"></iframe> -->\n</template>\n"; });
 __etrieve.define('text!resources/elements/document-viewer/document-viewer.css', ['module'], function(module) { module.exports = "h1 {\n  color: red; }\n"; });
 __etrieve.define('main',['exports', 'aurelia-web-components', './environment'], function (exports, _aureliaWebComponents, _environment) {
     'use strict';

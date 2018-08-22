@@ -9,7 +9,7 @@
   "license": "MIT",
   "dependencies": {
     "@webcomponents/shadycss": "^1.5.0",
-    "@webcomponents/webcomponentsjs": "^2.0.4",
+    "@webcomponents/webcomponentsjs": "^2.1.0",
     "almond": "^0.3.3",
     "aurelia-animator-css": "^1.0.4",
     "aurelia-bootstrapper": "^2.2.0",
