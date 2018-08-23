@@ -11,13 +11,27 @@ export class EtrieveDocumentViewer {
     }
 
     bind() {
+       
         this.testChanged(this.test);
-        // debugger;
         // ShadyCSS.prepareTemplate(this.element, 'etrieve-document-viewer');
     }
     attached() {
-        // debugger;
-        // ShadyCSS.styleElement(this.element);
+        setTimeout(() => {
+
+            debugger;
+            let elem = this.element;//this.element.au.controller.view.viewFactory.template;
+
+            let t = document.createElement('template');
+            let innerHTML = elem.innerHTML || elem.shadowRoot.innerHTML;
+            t.innerHTML = innerHTML;
+            ShadyCSS.prepareTemplate(t, 'etrieve-document-viewer');
+            console.log(t);
+            debugger;
+            ShadyCSS.styleElement(elem);
+            // debugger;
+            // ShadyCSS.styleElement(this.element);
+
+        }, 3000);
     }
     detached() {
 
