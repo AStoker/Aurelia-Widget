@@ -6,10 +6,6 @@ export default function widgetCompile(cb) {
         baseUrl: "./",
         namespace: "__etrieve",
         optimize: "none",
-        // wrap: {
-        //   start: "(function() {",
-        //   end: "}())"
-        // },
         generateSourceMaps: true,
         include: [
             "widget/polyfill-insertion.js",
